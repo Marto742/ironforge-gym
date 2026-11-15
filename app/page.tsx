@@ -10,7 +10,7 @@ import ScrollReveal from '@/components/ScrollReveal'
 
 export default function Home() {
   return (
-    <main className="relative">
+    <main id="top" className="relative">
       <Navbar />
       <Hero />
       <StatsBar />

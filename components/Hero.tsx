@@ -22,7 +22,7 @@ export default function Hero() {
       <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#B8FF4A] z-10" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 pt-28 pb-20 w-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 pt-36 pb-20 w-full">
         <div className="max-w-3xl">
           {/* Badge */}
           <div
@@ -39,10 +39,10 @@ export default function Hero() {
           <h1 className="font-display font-900 uppercase leading-none mb-6 reveal delay-100">
             <span className="block text-[clamp(3.5rem,8vw,7rem)] text-white tracking-tight">
               Get Fit.
-            </span>
+            </span>{' '}
             <span className="block text-[clamp(3.5rem,8vw,7rem)] tracking-tight">
               <span className="text-gradient">Join IRONFORGE</span>
-            </span>
+            </span>{' '}
             <span className="block text-[clamp(3.5rem,8vw,7rem)] text-white tracking-tight">
               Today.
             </span>
@@ -91,7 +91,7 @@ export default function Hero() {
           <div className="flex flex-wrap items-center gap-6 mt-12 reveal delay-400">
             {[
               { icon: '★', label: '4.9/5 Rating', sub: 'Google Reviews' },
-              { icon: '⚡', label: 'No Lock-in', sub: 'Cancel Anytime' },
+              { icon: '⚡', label: 'Monthly Plans', sub: 'No Lock-in' },
               { icon: '🏋', label: 'Expert Coaches', sub: 'Certified & Trusted' },
             ].map((item) => (
               <div key={item.label} className="flex items-center gap-2">

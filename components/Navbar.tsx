@@ -22,13 +22,18 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-[#080C0A]/95 backdrop-blur-md border-b border-white/5 py-3'
-          : 'bg-transparent py-5'
+          ? 'bg-[#080C0A]/95 backdrop-blur-md border-b border-white/5 pt-9 pb-3'
+          : 'bg-transparent pt-11 pb-5'
       }`}
     >
+      {/* Demo notice */}
+      <div className="absolute top-0 left-0 right-0 bg-[#B8FF4A] text-[#080C0A] text-center font-display font-700 text-[11px] leading-4 tracking-[0.15em] sm:tracking-[0.2em] uppercase py-1 px-4 whitespace-nowrap overflow-hidden">
+        <span className="sm:hidden">Demo site — not a real gym</span>
+        <span className="hidden sm:inline">Demo site — concept design, not a real gym</span>
+      </div>
       <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2 group">
+        <a href="#top" className="flex items-center gap-2 group">
           <div className="w-8 h-8 bg-[#B8FF4A] flex items-center justify-center rotate-45 group-hover:rotate-[60deg] transition-transform duration-300">
             <span className="text-[#080C0A] font-display font-900 text-xs -rotate-45 group-hover:-rotate-[60deg] transition-transform duration-300">
               IF

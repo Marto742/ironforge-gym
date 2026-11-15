@@ -1,18 +1,31 @@
 'use client'
 import { useState } from 'react'
 
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mgakakng'
+
 export default function ContactForm() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', goal: '' })
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setError('')
     setLoading(true)
-    // Simulate submission
-    await new Promise((r) => setTimeout(r, 1000))
-    setLoading(false)
-    setSubmitted(true)
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ ...form, _subject: `New tour request from ${form.name}` }),
+      })
+      if (!res.ok) throw new Error(`Formspree responded ${res.status}`)
+      setSubmitted(true)
+    } catch {
+      setError('Something went wrong. Please try again.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   const goals = ['Lose Weight', 'Build Muscle', 'Improve Fitness', 'Athletic Training', 'General Health']
@@ -125,7 +138,7 @@ export default function ContactForm() {
                     type="tel"
                     value={form.phone}
                     onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                    placeholder="+1 (555) 000-0000"
+                    placeholder="Optional"
                     className="w-full bg-white/5 border border-white/10 text-white font-body text-sm px-4 py-3 focus:outline-none focus:border-[#B8FF4A]/50 placeholder:text-white/20 transition-colors"
                   />
                 </div>
@@ -157,6 +170,12 @@ export default function ContactForm() {
                 >
                   {loading ? 'Sending...' : 'Book Your Free Tour →'}
                 </button>
+
+                {error && (
+                  <p role="alert" className="font-body text-sm text-red-400 text-center">
+                    {error}
+                  </p>
+                )}
 
                 <p className="font-body text-[11px] text-white/25 text-center leading-relaxed">
                   No spam. No commitment. We'll only contact you about your tour.
