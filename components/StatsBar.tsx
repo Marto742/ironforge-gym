@@ -18,7 +18,7 @@ export default function StatsBar() {
               <div className="font-display font-900 text-[clamp(2rem,4vw,3.5rem)] text-[#B8FF4A] leading-none tracking-tight">
                 {stat.number}
               </div>
-              <div className="font-body font-400 text-xs tracking-widest text-white/40 uppercase mt-1">
+              <div className="font-body font-400 text-xs tracking-widest text-white/50 uppercase mt-1">
                 {stat.label}
               </div>
             </div>

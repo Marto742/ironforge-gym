@@ -34,7 +34,7 @@ export default function Footer() {
                 IRON<span className="text-[#B8FF4A]">FORGE</span>
               </span>
             </div>
-            <p className="font-body text-sm text-white/35 leading-relaxed max-w-sm">
+            <p className="font-body text-sm text-white/50 leading-relaxed max-w-sm">
               Elite fitness training for people who are serious about results.
             </p>
           </div>
@@ -47,7 +47,7 @@ export default function Footer() {
               </h4>
               <ul className="space-y-2.5">
                 {col.links.map((link) => (
-                  <li key={link.label} className="font-body text-sm text-white/35">
+                  <li key={link.label} className="font-body text-sm text-white/50">
                     {'href' in link ? (
                       <a href={link.href} className="hover:text-white/70 transition-colors">
                         {link.label}
@@ -64,10 +64,10 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="font-body text-xs text-white/20">
+          <p className="font-body text-xs text-white/50">
             © {currentYear} IRONFORGE GYM. All rights reserved.
           </p>
-          <p className="font-body text-xs text-white/20">
+          <p className="font-body text-xs text-white/50">
             Demo project — concept design, not a real gym.
           </p>
         </div>

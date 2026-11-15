@@ -35,7 +35,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${barlowCondensed.variable} ${barlow.variable}`}>
-      <body className="noise-bg">{children}</body>
+      <body>{children}</body>
     </html>
   )
 }

@@ -18,9 +18,6 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-t from-[#080C0A] via-transparent to-[#080C0A]/30" />
       </div>
 
-      {/* Decorative lime vertical bar */}
-      <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#B8FF4A] z-10" />
-
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 pt-36 pb-20 w-full">
         <div className="max-w-3xl">
@@ -100,7 +97,7 @@ export default function Hero() {
                   <p className="font-display font-700 text-xs tracking-wider text-white uppercase">
                     {item.label}
                   </p>
-                  <p className="font-body text-xs text-white/40">{item.sub}</p>
+                  <p className="font-body text-xs text-white/50">{item.sub}</p>
                 </div>
               </div>
             ))}

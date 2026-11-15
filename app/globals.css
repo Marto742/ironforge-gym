@@ -41,36 +41,21 @@ body {
   border-radius: 2px;
 }
 
-/* Noise texture overlay */
-.noise-bg::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.4;
+/* Animate on scroll.
+   Content is visible by default, so nothing on the first screen waits for JS
+   (keeps LCP fast on phones). ScrollReveal adds .reveal-hidden only to elements
+   that start off-screen, and removes it when they scroll into view. */
+.reveal,
+.reveal-left {
+  transition: opacity 0.7s ease, transform 0.7s ease;
 }
-
-/* Animate on scroll */
-.reveal {
+.reveal.reveal-hidden {
   opacity: 0;
   transform: translateY(28px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
 }
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.reveal-left {
+.reveal-left.reveal-hidden {
   opacity: 0;
   transform: translateX(-28px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-.reveal-left.visible {
-  opacity: 1;
-  transform: translateX(0);
 }
 
 /* Staggered delays */
@@ -142,4 +127,16 @@ body {
 }
 .stat-number {
   animation: countUp 0.6s ease forwards;
+}
+
+/* Respect the "reduce motion" accessibility setting */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .marquee-inner,
+  .btn-pulse,
+  .stat-number {
+    animation: none;
+  }
 }

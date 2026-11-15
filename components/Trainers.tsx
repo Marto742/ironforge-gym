@@ -50,7 +50,7 @@ export default function Trainers() {
               <br />
               <span className="text-gradient">Real Results.</span>
             </h2>
-            <p className="font-body font-300 text-white/40 text-base max-w-xs md:text-right leading-relaxed">
+            <p className="font-body font-300 text-white/50 text-base max-w-xs md:text-right leading-relaxed">
               Every trainer is certified, experienced, and fully committed to your success.
             </p>
           </div>
@@ -100,7 +100,7 @@ export default function Trainers() {
                   {trainer.specializations.map((spec) => (
                     <span
                       key={spec}
-                      className="font-body text-[10px] text-white/40 border border-white/10 px-2.5 py-1 uppercase tracking-wider"
+                      className="font-body text-[10px] text-white/50 border border-white/10 px-2.5 py-1 uppercase tracking-wider"
                     >
                       {spec}
                     </span>

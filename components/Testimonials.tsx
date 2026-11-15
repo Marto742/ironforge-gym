@@ -71,7 +71,7 @@ export default function Testimonials() {
             <div className="text-right">
               <div className="font-display font-900 text-3xl text-[#B8FF4A]">4.9</div>
               <Stars count={5} />
-              <p className="font-body text-xs text-white/30 mt-1">240+ Google Reviews</p>
+              <p className="font-body text-xs text-white/50 mt-1">240+ Google Reviews</p>
             </div>
           </div>
         </div>
@@ -87,14 +87,17 @@ export default function Testimonials() {
                   : 'border-white/5 bg-[#0F1510]'
               }`}
             >
-              {/* Quote mark */}
-              <div
-                className={`font-display font-900 text-6xl leading-none mb-4 ${
+              {/* Quote mark (decorative SVG, so it isn't read out or contrast-checked as text) */}
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 22 14"
+                fill="currentColor"
+                className={`block w-6 h-5 mt-2 mb-12 ${
                   t.highlight ? 'text-[#B8FF4A]/30' : 'text-white/10'
                 }`}
               >
-                "
-              </div>
+                <path d="M2 0h6l-1 14H3zM14 0h6l-1 14h-4z" />
+              </svg>
 
               {/* Stars */}
               <Stars count={t.stars} />

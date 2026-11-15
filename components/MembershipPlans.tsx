@@ -89,8 +89,8 @@ export default function MembershipPlans() {
             <span className="text-gradient">Combat Level</span>
           </h2>
           <p className="font-body font-300 text-white/50 text-lg mt-4 max-w-lg">
-            No hidden fees. No complicated contracts. Just pure, results-driven
-            memberships built for every stage of your journey.
+            No hidden fees. Cancel monthly plans anytime, or commit to a year
+            and save 34%.
           </p>
         </div>
 
@@ -126,7 +126,7 @@ export default function MembershipPlans() {
                 >
                   {plan.name}
                 </h3>
-                <p className="font-body text-xs text-white/40 mt-1">{plan.tagline}</p>
+                <p className="font-body text-xs text-white/50 mt-1">{plan.tagline}</p>
               </div>
 
               {/* Price */}
@@ -134,7 +134,7 @@ export default function MembershipPlans() {
                 <span className="font-display font-900 text-[3rem] leading-none text-white">
                   ${plan.price}
                 </span>
-                <span className="font-body text-white/40 text-sm mb-2">{plan.period}</span>
+                <span className="font-body text-white/50 text-sm mb-2">{plan.period}</span>
               </div>
 
               {/* Features */}
@@ -170,7 +170,7 @@ export default function MembershipPlans() {
         </div>
 
         {/* Bottom note */}
-        <p className="text-center font-body text-xs text-white/25 mt-8 tracking-wider reveal delay-500">
+        <p className="text-center font-body text-xs text-white/50 mt-8 tracking-wider reveal delay-500">
           All plans include a 7-day free trial. No credit card required to start.
         </p>
       </div>

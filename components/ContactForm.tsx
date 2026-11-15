@@ -3,6 +3,14 @@ import { useState } from 'react'
 
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mgakakng'
 
+// One shared look for every field, so they match on all phones and browsers
+// (without appearance-none/rounded-none, iPhones round text inputs but not selects)
+const fieldBase =
+  'w-full appearance-none rounded-none bg-white/5 border border-white/10 font-body text-base px-4 py-3 focus:outline-none focus:border-[#B8FF4A]/50 transition-colors'
+const inputClass = `${fieldBase} text-white placeholder:text-white/50`
+const labelClass =
+  'block font-display font-600 text-[10px] tracking-[0.25em] uppercase text-white/50 mb-2'
+
 export default function ContactForm() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', goal: '' })
   const [submitted, setSubmitted] = useState(false)
@@ -70,7 +78,7 @@ export default function ContactForm() {
                     <p className="font-display font-700 text-sm tracking-wider text-white uppercase">
                       {item.title}
                     </p>
-                    <p className="font-body text-xs text-white/40 mt-0.5">{item.desc}</p>
+                    <p className="font-body text-xs text-white/50 mt-0.5">{item.desc}</p>
                   </div>
                 </li>
               ))}
@@ -101,65 +109,90 @@ export default function ContactForm() {
 
                 {/* Name */}
                 <div>
-                  <label className="block font-display font-600 text-[10px] tracking-[0.25em] uppercase text-white/40 mb-2">
+                  <label htmlFor="contact-name" className={labelClass}>
                     Full Name *
                   </label>
                   <input
+                    id="contact-name"
+                    name="name"
+                    autoComplete="name"
                     type="text"
                     required
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
                     placeholder="e.g. Alex Johnson"
-                    className="w-full bg-white/5 border border-white/10 text-white font-body text-sm px-4 py-3 focus:outline-none focus:border-[#B8FF4A]/50 placeholder:text-white/20 transition-colors"
+                    className={inputClass}
                   />
                 </div>
 
                 {/* Email */}
                 <div>
-                  <label className="block font-display font-600 text-[10px] tracking-[0.25em] uppercase text-white/40 mb-2">
+                  <label htmlFor="contact-email" className={labelClass}>
                     Email Address *
                   </label>
                   <input
+                    id="contact-email"
+                    name="email"
+                    autoComplete="email"
                     type="email"
                     required
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
                     placeholder="you@email.com"
-                    className="w-full bg-white/5 border border-white/10 text-white font-body text-sm px-4 py-3 focus:outline-none focus:border-[#B8FF4A]/50 placeholder:text-white/20 transition-colors"
+                    className={inputClass}
                   />
                 </div>
 
                 {/* Phone */}
                 <div>
-                  <label className="block font-display font-600 text-[10px] tracking-[0.25em] uppercase text-white/40 mb-2">
+                  <label htmlFor="contact-phone" className={labelClass}>
                     Phone Number
                   </label>
                   <input
+                    id="contact-phone"
+                    name="phone"
+                    autoComplete="tel"
                     type="tel"
                     value={form.phone}
                     onChange={(e) => setForm({ ...form, phone: e.target.value })}
                     placeholder="Optional"
-                    className="w-full bg-white/5 border border-white/10 text-white font-body text-sm px-4 py-3 focus:outline-none focus:border-[#B8FF4A]/50 placeholder:text-white/20 transition-colors"
+                    className={inputClass}
                   />
                 </div>
 
                 {/* Goal */}
                 <div>
-                  <label className="block font-display font-600 text-[10px] tracking-[0.25em] uppercase text-white/40 mb-2">
+                  <label htmlFor="contact-goal" className={labelClass}>
                     Primary Goal
                   </label>
-                  <select
-                    value={form.goal}
-                    onChange={(e) => setForm({ ...form, goal: e.target.value })}
-                    className="w-full bg-[#0A0E0B] border border-white/10 text-white/70 font-body text-sm px-4 py-3 focus:outline-none focus:border-[#B8FF4A]/50 transition-colors appearance-none cursor-pointer"
-                  >
-                    <option value="">Select your goal</option>
-                    {goals.map((g) => (
-                      <option key={g} value={g}>
-                        {g}
+                  <div className="relative">
+                    <select
+                      id="contact-goal"
+                      name="goal"
+                      value={form.goal}
+                      onChange={(e) => setForm({ ...form, goal: e.target.value })}
+                      className={`${fieldBase} pr-10 cursor-pointer ${form.goal ? 'text-white' : 'text-white/50'}`}
+                    >
+                      <option value="" className="bg-[#0F1510] text-white">
+                        Select your goal
                       </option>
-                    ))}
-                  </select>
+                      {goals.map((g) => (
+                        <option key={g} value={g} className="bg-[#0F1510] text-white">
+                          {g}
+                        </option>
+                      ))}
+                    </select>
+                    {/* Dropdown arrow (appearance-none removes the native one) */}
+                    <svg
+                      aria-hidden="true"
+                      className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/50"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
                 </div>
 
                 {/* Submit */}
@@ -177,7 +210,7 @@ export default function ContactForm() {
                   </p>
                 )}
 
-                <p className="font-body text-[11px] text-white/25 text-center leading-relaxed">
+                <p className="font-body text-[11px] text-white/50 text-center leading-relaxed">
                   No spam. No commitment. We'll only contact you about your tour.
                 </p>
               </form>
